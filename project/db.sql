@@ -72,7 +72,6 @@ CREATE TABLE `Item` (
 CREATE TABLE `Place` (
   `idPlace` int(11) NOT NULL AUTO_INCREMENT,
   `Area_id` int(11) NOT NULL,
-  `Road_id` int(11) NOT NULL,
   `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `url` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -108,17 +107,7 @@ CREATE TABLE `Review` (
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `Road`
---
 
-CREATE TABLE `Road` (
-  `idRoad` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`idRoad`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `Shop`

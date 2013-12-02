@@ -1,4 +1,6 @@
-<html lang="en"><head>
+<html lang="en">
+<?php include 'database_connect.php'; ?>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bootbusiness | Short description about company">
@@ -37,7 +39,7 @@
                     <li class="nav-header">Facilities</li>
                     <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
-                    <li><a href="restuarant.php">Restuarant</a></li>            
+                    <li><a href="Restaurant.php">Restaurant</a></li>            
                     <li class="divider"></li>
                     <li class="nav-header">Place & Shopping</li>
                     <li><a href="travel.php">Travel Place</a></li>
@@ -51,7 +53,7 @@
                   <ul class="dropdown-menu">
                     <li><a href="pop_travel.php">Popular Travel</a></li>
                     <li><a href="pop_hotel.php">Popular Hotel</a></li>
-                    <li><a href="pop_food.php">Popular Restuarant & Food</a></li>
+                    <li><a href="pop_food.php">Popular Restaurant & Food</a></li>
                   </ul>
                 </li>
                 
@@ -77,7 +79,6 @@
                 <tr>
                   <td><h3>Type</h3></td>
                   <td><h3>Distinct</h3></td>
-                  <td><h3>Road</h3></td>
                 </tr>
                 <tr>
                   <td>
@@ -87,7 +88,7 @@
                     <option value="2">Hotel</option>
                     <option value="3">Travel Place</option>
                     <option value="4">Shopping</option>
-                    <option value="5">Restuarant</option>
+                    <option value="5">Restaurant</option>
                 </select>
               </td>
                 <td>
@@ -100,19 +101,8 @@
                     <option value="5">5</option>
                 </select>
               </td>
-              <td> 
-                <select name="road">
-                    <option value="0">None</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-              </td>
               </tr>
               
-              <td></td>
               <tr>
               <td>
                 <button type="submit" class="btn btn-large btn-info">Search</button>
@@ -126,49 +116,27 @@
           </div>
 
           </div>
-                    <div class="row">
+          <?php if(!empty($_GET)){ ?>
+          <?php $out = mysqli_query($con,"SELECT * FROM Place,Restaurant WHERE place.idPlace = Restaurant.idRestaurant");?>
+            <div class="row">
             <div class="span10 offset1">            
               <div class="row bottom-space">
                 <div class="span3 center-align">
                   <img src="http://placehold.it/200x200" class="thumbnail">
                 </div>
                 <div class="span7">
-                  <p class="team-member-description">
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                  </p>
+                   <?php include 'print_list.php'; ?>
                 </div>
-              </div>
-              <div class="row bottom-space">
-                <div class="span3 center-align">
-                  <img src="http://placehold.it/200x200" class="thumbnail">
-                </div>
-                <div class="span7">
-                  <p class="team-member-description">
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                  </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="span3 center-align">
-                  <img src="http://placehold.it/200x200" class="thumbnail">
-                </div>
-                <div class="span7">
-                  <p class="team-member-description">
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                  </p>
-                </div>
-              </div>                            
+              </div>                          
             </div>
+
+
+            <?php } ?>
           </div>
         <article>
       </article></article></div>
     </div>
+
     <!-- End: MAIN CONTENT -->
     <!-- Start: FOOTER -->
     <footer>
@@ -180,7 +148,7 @@
               <ul class="quick-links">
                     <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
-                    <li><a href="restuarant.php">Restuarant</a></li>            
+                    <li><a href="Restaurant.php">Restaurant</a></li>            
                     
                     
               </ul>
@@ -201,7 +169,7 @@
               <ul class="quick-links">
                 <li><a href="pop_travel.php">Popular Travel</a></li>
                 <li><a href="pop_hotel.php">Popular Hotel</a></li>
-                <li><a href="pop_food.php">Popular Restuarant & Food</a></li>
+                <li><a href="pop_food.php">Popular Restaurant & Food</a></li>
               <ul>
             </ul></ul></nav>          
           </div>
@@ -227,4 +195,6 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/boot-business.js"></script>
   
-</body></html>
+</body>
+<?php mysqli_close($con); ?>
+</html>

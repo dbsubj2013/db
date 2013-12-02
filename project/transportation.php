@@ -1,4 +1,6 @@
-<html lang="en"><head>
+<html lang="en">
+<?php include 'database_connect.php'; ?>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bootbusiness | Short description about company">
@@ -66,6 +68,7 @@
     </header>
     <!-- End: HEADER -->
     <!-- Start: MAIN CONTENT -->
+    <?php $out = mysqli_query($con,"SELECT * FROM Place,Attraction WHERE place.idPlace = Attraction.idAttraction ");?>
     <div class="content">
       <div class="container">
         
@@ -80,37 +83,9 @@
                   <img src="http://placehold.it/200x200" class="thumbnail">
                 </div>
                 <div class="span7">
-                  <p class="team-member-description">
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                  </p>
+                  <?php include 'print_list.php'; ?>
                 </div>
-              </div>
-              <div class="row bottom-space">
-                <div class="span3 center-align">
-                  <img src="http://placehold.it/200x200" class="thumbnail">
-                </div>
-                <div class="span7">
-                  <p class="team-member-description">
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                  </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="span3 center-align">
-                  <img src="http://placehold.it/200x200" class="thumbnail">
-                </div>
-                <div class="span7">
-                  <p class="team-member-description">
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                    Short discription about your team member.Short discription about your team member.
-                  </p>
-                </div>
-              </div>                            
+              </div>       
             </div>
           </div>
         <article>
