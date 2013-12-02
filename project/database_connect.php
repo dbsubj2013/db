@@ -1,5 +1,6 @@
 <?php
-$con=mysqli_connect("localhost","root","","bangkok");
+$con=mysqli_connect("localhost","root","root","bangkok");
+$con->query("SET NAMES 'utf8'");
 // Check connection
 if (mysqli_connect_errno())
   {

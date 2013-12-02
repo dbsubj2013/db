@@ -68,7 +68,7 @@
     </header>
     <!-- End: HEADER -->
     <!-- Start: MAIN CONTENT -->
-    <?php $out = mysqli_query($con,"SELECT * FROM Place,Restaurant WHERE place.idPlace = Restaurant.idRestaurant");?>
+    <?php $out = mysqli_query($con,"SELECT * FROM Place,Restaurant WHERE Place.idPlace = Restaurant.idRestaurant");?>
     <div class="content">
       <div class="container">
         
@@ -76,19 +76,7 @@
           <div class="page-header">
             <h1>Restaurant <i class="icon-glass"></i>    <small> The best food from the best Restaurant.</small></h1>
           </div>
-          <div class="row">
-            <div class="span10 offset1">            
-              <div class="row bottom-space">
-                <div class="span3 center-align">
-                  <img src="http://placehold.it/200x200" class="thumbnail">
-                </div>
-                <div class="span7">
-                  <?php include 'print_list.php'; ?>
-                </div>
-
-              </div>             
-            </div>
-          </div>
+          <?php include 'print_list.php'; ?>
         <article>
       </article></article></div>
     </div>

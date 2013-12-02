@@ -68,7 +68,7 @@
     </header>
     <!-- End: HEADER -->
     <!-- Start: MAIN CONTENT -->
-    <?php $out = mysqli_query($con,"SELECT * FROM Place,Attraction WHERE place.idPlace = Attraction.idAttraction ");?>
+    <?php $out = mysqli_query($con,"SELECT * FROM Place,Attraction WHERE Place.idPlace = Attraction.idAttraction ");?>
     <div class="content">
       <div class="container">
         
@@ -76,18 +76,7 @@
           <div class="page-header">
             <h1>Travel Place <i class="icon-briefcase"></i>    <small> Enjoy life with Bangkok.</small></h1>
           </div>
-          <div class="row">
-            <div class="span10 offset1">            
-              <div class="row bottom-space">
-                <div class="span3 center-align">
-                  <img src="http://placehold.it/200x200" class="thumbnail">
-                </div>
-                <div class="span7">
                    <?php include 'print_list.php'; ?>
-                </div>
-              </div>  
-            </div>
-          </div>
         <article>
       </article></article></div>
     </div>
