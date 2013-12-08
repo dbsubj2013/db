@@ -68,7 +68,13 @@
     </header>
     <!-- End: HEADER -->
     <!-- Start: MAIN CONTENT -->
-     <?php $out = mysqli_query($con,"SELECT Place.*,Hotel.* FROM Place,Hotel WHERE Place.idPlace = Hotel.idHotel ");?>
+     <?php $out = mysqli_query($con,
+        "SELECT idPlace, Place.name as PlaceName, Area.name as Area,HotelType.HotelTypeName as Type,address,url,pic
+        FROM ((Place INNER JOIN Hotel on Place.idPlace=Hotel.idHotel)
+            INNER JOIN Area on Place.Area_id=Area.idArea)
+            INNER JOIN HotelType on Hotel.type = HotelType.idHotelType
+        ORDER BY Area, Type ,Placename desc
+        ");?>
     <div class="content">
       <div class="container">
         

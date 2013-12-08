@@ -68,7 +68,12 @@
     </header>
     <!-- End: HEADER -->
     <!-- Start: MAIN CONTENT -->
-    <?php $out = mysqli_query($con,"SELECT * FROM Place,Shop WHERE Place.idPlace = Shop.idShop");?>
+    <?php $out = mysqli_query($con,
+      "SELECT idPlace, Place.name as PlaceName, Area.name as Area,ShopType.ShopTypeName as Type,address,url,pic
+      FROM (Place INNER JOIN Shop on Place.idPlace=Shop.idShop) INNER JOIN ShopType on Shop.type = ShopType.idShopType ,Area
+      WHERE Area.idArea = Area_id and Area_id IN (SELECT Area.idArea FROM Area,Place WHERE Place.Area_id = Area.idArea)
+      ORDER BY Area, Type ,Placename desc
+    ");?>
     <div class="content">
       <div class="container">
         

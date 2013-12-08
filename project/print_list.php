@@ -18,8 +18,10 @@ while($result = mysqli_fetch_array($out)){?>
                 </div>
                 <div class="span7">
                   <p class="team-member-description">
-                    <h4><?echo $result['name'];?></h4>
-						<?echo $result['address'];?>
+                    <h4><?echo $result['PlaceName'];?></h4>
+						        <?echo $result['address'];?><br>
+                    <?echo '<b>เขต: </b>'.$result['Area'];?>
+                    <?echo '<b>ประเภท:</b> '.$result['Type'];?>
 						<br><br>
 						<a href="<?echo $result['url'];?>" target="_blank">More detail</a>
 

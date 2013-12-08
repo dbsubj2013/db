@@ -37,7 +37,7 @@
                     <li class="nav-header">Facilities</li>
                     <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
-                    <li><a href="restuarant.php">Restuarant</a></li>            
+                    <li><a href="restaurant.php">Restaurant</a></li>            
                     <li class="divider"></li>
                     <li class="nav-header">Place & Shopping</li>
                     <li><a href="travel.php">Travel Place</a></li>
@@ -51,7 +51,7 @@
                   <ul class="dropdown-menu">
                     <li><a href="pop_travel.php">Popular Travel</a></li>
                     <li class="active"><a href="#">Popular Hotel</a></li>
-                    <li><a href="pop_food.php">Popular Restuarant & Food</a></li>
+                    <li><a href="pop_food.php">Popular Restaurant & Food</a></li>
                   </ul>
                 </li>
                 
@@ -73,7 +73,7 @@
           <div class="row bottom-space">
             <div class="span12">
               <div class="page-header">
-                <h1>Product <small>Caption for the product</small></h1>
+                <!-- <h1>Product <small>Caption for the product</small></h1> -->
               </div>
             </div>
             <div class="span12 center-align">
@@ -101,7 +101,7 @@
                 Detailed description about the product that how it makes the customer's life easy.
               </p>        
               <div class="span8 offset1">
-                <h3>Fetures of product1</h3>
+                <h3>Comments</h3>
                 <ul class="features">
                   <li>
                     <i class="icon-ok "></i>24 hrs support
@@ -131,29 +131,7 @@
               </div>                                              
             </div>      
           </div>
-          <div class="row">
-            <div class="span10 offset1">
-              <hr>
-              <div class="span3">
-                <p>
-                  Ready to start the innovation?
-                </p>
-                <a class="btn btn-large btn-block" href="#">Buy now</a>
-              </div>
-              <div class="span3">
-                <p>
-                  Got confused?
-                </p>
-                <a class="btn btn-large btn-block" href="contact_us.html">Contact us</a>
-              </div>
-              <div class="span3">
-                <p>
-                  Check frequently asked question
-                </p>
-                <a class="btn btn-large btn-block" href="faq.html">FAQ</a>
-              </div>              
-            </div>
-          </div>
+          
         </airticle>
         <!-- End: Product description -->
       </div>
@@ -170,7 +148,7 @@
               <ul class="quick-links">
                     <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
-                    <li><a href="restuarant.php">Restuarant</a></li>            
+                    <li><a href="restaurant.php">Restaurant</a></li>            
                     
                     
               </ul>
@@ -191,7 +169,7 @@
               <ul class="quick-links">
                 <li><a href="pop_travel.php">Popular Travel</a></li>
                 <li><a href="#">Popular Hotel</a></li>
-                <li><a href="pop_food.php">Popular Restuarant & Food</a></li>
+                <li><a href="pop_food.php">Popular Restaurant & Food</a></li>
               <ul>
             </ul></ul></nav>          
           </div>
