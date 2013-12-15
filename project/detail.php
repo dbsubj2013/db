@@ -36,7 +36,6 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Information<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li class="nav-header">Facilities</li>
-                    <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
                     <li><a href="restaurant.php">Restaurant</a></li>            
                     <li class="divider"></li>
@@ -82,6 +81,7 @@
             </div>
           </div>
           <div class="row">
+
             <div class="span10 offset1">
               <p>
                 Detailed description about the product that how it makes the customer's life easy.
@@ -101,21 +101,28 @@
                 Detailed description about the product that how it makes the customer's life easy.
                 Detailed description about the product that how it makes the customer's life easy.
               </p>        
-              <div class="span8 offset1">
-
+              <div class="row">
+              
                 <?php $out = mysqli_query($con,"SELECT * FROM Review WHERE idReview = 11");?>
+                
+
                 <h3>Comments</h3>
+                </ul>
                 <ul class="features">
                   <?php 
                     while($result = mysqli_fetch_array($out)){?>
                   <li class="well">
-                    <i class="icon-hand-right "></i><?echo $result['comment']?>
+                    <ul>
+                    <li class="span3"><h3><i class="icon-star"></i> Rating : <?echo "4.5"?></h3></li>
+                    <i class="icon-hand-right "></i><?echo ' '.$result['comment']?>
+                  </ul>
                   </li>
                   <hr>   
                   <?}?>
                 </ul>
               </div>                                              
-            </div>      
+            </div> 
+            </div>     
           </div>
           
         </airticle>
@@ -132,7 +139,6 @@
             <h4><i class="icon-star icon-white"></i> Information</h4>
             <nav>
               <ul class="quick-links">
-                    <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
                     <li><a href="restaurant.php">Restaurant</a></li>            
                     
