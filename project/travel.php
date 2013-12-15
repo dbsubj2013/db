@@ -69,7 +69,7 @@
     <!-- End: HEADER -->
     <!-- Start: MAIN CONTENT -->
     <?php $out = mysqli_query($con,
-      "SELECT idPlace, Place.name as PlaceName, Area.name as Area,AttractionType.AttractionTypeName as Type,address,url,pic
+      "SELECT idPlace, Place.name as PlaceName, Place.idPlace as id, Area.name as Area,AttractionType.AttractionTypeName as Type,address,url,pic
       FROM ((Place INNER JOIN Attraction on Place.idPlace=Attraction.idAttraction)
               INNER JOIN Area on Place.Area_id=Area.idArea)
               INNER JOIN AttractionType on Attraction.type = AttractionType.idAttractionType

@@ -23,7 +23,7 @@ while($result = mysqli_fetch_array($out)){?>
                     <?echo '<b>เขต: </b>'.$result['Area'];?>
                     <?echo '<b>ประเภท: </b> '.$result['Type'];?>
 						<br><br>
-						<a href="<?echo $result['url'];?>" target="_blank">More detail</a>
+						<a href="<?echo 'detail.php?id='.$result['id'];?>" target="_blank">More detail</a>
 
                   </p>
                 </div>

@@ -1,5 +1,6 @@
 <html lang="en"><head>
     <meta charset="utf-8">
+    
     <?php include 'database_connect.php'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bootbusiness | Short description about company">
@@ -66,9 +67,22 @@
     </header>
     <!-- End: HEADER -->
     <!-- Start: Main content -->
+
     <div class="content">    
+     
       <div class="container">
         <!-- Start: Product description -->
+        <?php if(!empty($_GET)){ ?>
+        <?php $out = mysqli_query($con,"SELECT place.name as PlaceName,place.pic,place.url, area.name as Area , place.address FROM Place inner join Area on place.area_id = Area.idArea
+        WHERE place.idPlace = ".$_GET["id"]);
+        while($result = mysqli_fetch_array($out)){
+        ?>
+        <? 
+        if($result['pic']!='') 
+                $picture = $result['pic'];
+              else 
+                $picture = 'http://placehold.it/200x200';
+        ?>
         <airticle class="article">
           <div class="row bottom-space">
             <div class="span12">
@@ -77,44 +91,41 @@
               </div>
             </div>
             <div class="span12 center-align">
-              <img src="http://placehold.it/800x300" class="thumbnail product-snap">            
+              <img src="<?echo $picture;?>" class="thumbnail product-snap">            
             </div>
           </div>
           <div class="row">
 
             <div class="span10 offset1">
               <p>
-                Detailed description about the product that how it makes the customer's life easy.
-                Detailed description about the product that how it makes the customer's life easy.
-                Detailed description about the product that how it makes the customer's life easy.
-                Detailed description about the product that how it makes the customer's life easy.
+                <h4><?echo $result['PlaceName'];?></h4>
+                    <?echo $result['address'];?><br>
+                    <?echo '<b>เขต: </b>'.$result['Area'];?>
+            <br><br>
+            <a href="<?echo $result['url'];?>" target="_blank">More detail</a>
               </p>
-              <p>
-                Detailed description about the product that how it makes the customer's life easy.
-                Detailed description about the product that how it makes the customer's life easy.
-                Detailed description about the product that how it makes the customer's life easy.
-                Detailed description about the product that how it makes the customer's life easy.
-              </p>
-              <p>
-                Detailed description about the product that how it makes the customer's life easy.
-                Detailed description about the product that how it makes the customer's life easy.
-                Detailed description about the product that how it makes the customer's life easy.
-                Detailed description about the product that how it makes the customer's life easy.
-              </p>        
+                     
               <div class="row">
-              
-                <?php $out = mysqli_query($con,"SELECT * FROM Review WHERE idReview = 11");?>
+             <?php }?> 
                 
-
+                <?php $out = mysqli_query($con,"SELECT Review.rating,Review.comment FROM Place inner join Review on place.idPlace = Review.idPlace where place.idPlace =".$_GET["id"]); ?>
+                <? if ( mysqli_num_rows($out) != 0 ) { ?>
                 <h3>Comments</h3>
+                <? } ?>
                 </ul>
                 <ul class="features">
                   <?php 
-                    while($result = mysqli_fetch_array($out)){?>
+                  while($result = mysqli_fetch_array($out)){ ?>
                   <li class="well">
                     <ul>
-                    <li class="span3"><h3><i class="icon-star"></i> Rating : <?echo "4.5"?></h3></li>
-                    <i class="icon-hand-right "></i><?echo ' '.$result['comment']?>
+                    <li class="span3"><h3><i class="icon-star"></i> Rating : <?echo $result["rating"]?></h3></li>
+                    <i class="icon-hand-right "></i>
+                    <?if($result['comment'] == ""){ 
+                      echo ' No Comment.';
+                    }
+                    else{
+                      echo ' '.$result['comment'];
+                    }?>
                   </ul>
                   </li>
                   <hr>   
@@ -127,7 +138,9 @@
           
         </airticle>
         <!-- End: Product description -->
+        <?php } ?>
       </div>
+      
     </div>
     
     <!-- End: Main content -->
@@ -187,4 +200,6 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/boot-business.js"></script>
   
-</body></html>
+</body>
+<?php mysqli_close($con); ?>
+</html>
