@@ -84,21 +84,21 @@
                   <td>
                 <select name="type">
                     <option value="0">None</option>
-                    <option value="1">Transportation</option>
-                    <option value="2">Hotel</option>
-                    <option value="3">Travel Place</option>
-                    <option value="4">Shopping</option>
-                    <option value="5">Restaurant</option>
+                    <option value="TransitPlace">Transportation</option>
+                    <option value="Hotel">Hotel</option>
+                    <option value="Attraction">Travel Place</option>
+                    <option value="Shop">Shopping</option>
+                    <option value="Restaurant">Restaurant</option>
                 </select>
               </td>
                 <td>
                 <select name="distinct">
                     <option value="0">None</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="1">พญาไท</option>
+                    <option value="2">สาทร</option>
+                    <option value="3">ดุสิต</option>
+                    <option value="4">พระนคร</option>
+                    <option value="5">ปทุมวัน</option>
                 </select>
               </td>
               </tr>
@@ -117,7 +117,25 @@
 
           </div>
           <?php if(!empty($_GET)){ ?>
-          <?php $out = mysqli_query($con,"SELECT * FROM Place,Restaurant WHERE place.idPlace = Restaurant.idRestaurant");?>
+          <?php $type = $_GET["type"];
+                $area = $_GET["distinct"];
+           ?>
+          <?php 
+          if($type != '0'){}
+          $out = mysqli_query($con,"SELECT place.name as PlaceName, place.address,place.url,place.pic,area.name as Area 
+          ,".type."Type.".type."TypeName as Type ,SUM(review.rating)/count(review.rating) as rating
+          FROM place,".type.",review,area,".type."Type WHERE place.idPlace = ".type.".id".type." and review.idPlace = place.idPlace and
+          place.Area_id = area.idArea and ".type.".type = ".type."Type.id".type."Type group by place.idPlace order by rating desc ,ISNULL(place.pic), place.pic asc;"
+          );
+          }
+          else{
+              $out = mysqli_query($con,"SELECT place.name as PlaceName, place.address,place.url,place.pic,area.name as Area 
+          ,AttractionType.AttractionTypeName as Type ,SUM(review.rating)/count(review.rating) as rating
+          FROM place,Attraction,review,area,AttractionType WHERE place.idPlace = Attraction.idAttraction and review.idPlace = place.idPlace and
+          place.Area_id = area.idArea and Attraction.type = AttractionType.idAttractionType group by place.idPlace order by rating desc ,ISNULL(place.pic), place.pic asc;"
+          );
+          }
+          ?>
             <div class="row">
             <div class="span10 offset1">            
               <div class="row bottom-space">
