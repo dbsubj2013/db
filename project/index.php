@@ -1,5 +1,6 @@
 <html lang="en"><head>
     <meta charset="utf-8">
+    <?php include 'database_connect.php'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bootbusiness | Short description about company">
     <meta name="author" content="Your name">
@@ -13,6 +14,16 @@
     <link href="css/font-awesome-ie7.css" rel="stylesheet">
     <!-- Bootbusiness theme -->
     <link href="css/boot-business.css" rel="stylesheet">
+    <style type="text/css">
+    .box {
+     height: 200px;
+     width: 200px;
+      }
+    .bigbox {
+     height: 400px;
+     width: 400px;
+      }
+    </style> 
   </head>
   <body>
     <!-- Start: HEADER -->
@@ -35,7 +46,7 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Information<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li class="nav-header">Facilities</li>
-                    <li><a href="transportation.php">Transportation</a></li>
+                  
                     <li><a href="hotel.php">Hotel</a></li>
                     <li><a href="restuarant.php">Restuarant</a></li>            
                     <li class="divider"></li>
@@ -72,80 +83,102 @@
         <div class="container-fluid">
           <div id="heroSlider" class="carousel slide">
             <div class="carousel-inner">
+
+              <?php $out = mysqli_query($con,
+      "SELECT idPlace, Place.name as PlaceName, Area.name as Area,ShopType.ShopTypeName as Type,address,url,pic
+      FROM (Place INNER JOIN Shop on Place.idPlace=Shop.idShop) INNER JOIN ShopType on Shop.type = ShopType.idShopType ,Area
+      WHERE Area.idArea = Area_id and Area_id IN (SELECT Area.idArea FROM Area,Place WHERE Place.Area_id = Area.idArea) 
+      and pic LIKE 'http%'
+      ORDER BY Area, Type ,Placename desc
+      LIMIT 7,1
+    ");?>
               <div class="item">
                 <div class="hero-unit">
                   <div class="row-fluid">
                     <div class="span7 marketting-info">
-                      <h1>TELL ABOUT YOUR BUSINESS AND CORPORATE.</h1>
+                        <?php 
+                        $result = mysqli_fetch_array($out)?>
+                        <h1><?echo $result['PlaceName'];?></h1>
                       <p>
-                        We are Bootbusiness and we are awesome.We solve your technology problems by our awesome products.
-                        We are Bootbusiness and we are awesome.We solve your technology problems by our awesome products.
+                            <?echo $result['address'];?><br>
+                            <?echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?echo '<b>ประเภท:</b> '.$result['Type'];?>
+                                                    <br><br>
                       </p>
                       <h3>
-                        <a href="product.php" class="btn">Learn more</a>
+                        <a href="<?echo $result['url'];?>" target="_blank" class="btn btn-info">More information</a>
                       </h3>                      
                     </div>
                     <div class="span5">
-                      <img src="img/placeholder.jpg" class="thumbnail">
+                      <img src="<?echo $result['pic']?>" class="bigbox">
+                      
                     </div>
                   </div>                  
                 </div>
               </div>
+
+              <?php $out = mysqli_query($con,
+          "SELECT idPlace, Place.name as PlaceName, Area.name as Area,RestaurantType.RestaurantTypeName as Type,address,url,pic
+          FROM ((Place INNER JOIN Restaurant on Place.idPlace=Restaurant.idRestaurant)
+                INNER JOIN Area on Place.Area_id=Area.idArea)
+                INNER JOIN RestaurantType on Restaurant.type = RestaurantType.idRestaurantType
+                WHERE pic LIKE 'http%'
+          ORDER BY Area, Type ,Placename desc
+          LIMIT 20,1
+          ");?>
               <div class="item">
                 <div class="hero-unit">
                   <div class="row-fluid">
                     <div class="span7 marketting-info">
-                      <h1>TELL ABOUT YOUR NATURE OF WORK</h1>
+                        <?php 
+                        $result = mysqli_fetch_array($out)?>
+                        <h1><?echo $result['PlaceName'];?></h1>
                       <p>
-                        We are Bootbusiness and we design ultimate website applications.
-                        We are Bootbusiness and we design ultimate website applications.
+                            <?echo $result['address'];?><br>
+                            <?echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?echo '<b>ประเภท:</b> '.$result['Type'];?>
+                                                    <br><br>
                       </p>
                       <h3>
-                        <a href="service.php" class="btn">Learn more</a>
+                        <a href="<?echo $result['url'];?>" target="_blank" class="btn btn-info">More information</a>
                       </h3>                      
                     </div>
                     <div class="span5">
-                      <img src="img/placeholder.jpg" class="thumbnail">
+                      <img src="<?echo $result['pic']?>" class="bigbox">
+                      
                     </div>
                   </div>                  
                 </div>
               </div>
-              <div class="item">
-                <div class="hero-unit">
-                  <div class="row-fluid">
-                    <div class="span7 marketting-info">
-                      <h1>TELL ABOUT YOUR PRODUCT</h1>
-                      <p>
-                        Get excited about our products.We build awesome products in mobile.
-                        We build awesome products in mobile.We build awesome products in mobile.
-                      </p>
-                      <h3>
-                        <a href="#" class="btn btn-primary">Buy now</a>
-                        <a href="product.php" class="btn">Learn more</a>
-                      </h3>                      
-                    </div>
-                    <div class="span5">
-                      <img src="img/placeholder.jpg" class="thumbnail">
-                    </div>
-                  </div>                  
-                </div>
-              </div>
+
+            <?php $out = mysqli_query($con,
+              "SELECT idPlace, Place.name as PlaceName, Area.name as Area,HotelType.HotelTypeName as Type,address,url,pic
+                FROM ((Place INNER JOIN Hotel on Place.idPlace=Hotel.idHotel)
+            INNER JOIN Area on Place.Area_id=Area.idArea)
+            INNER JOIN HotelType on Hotel.type = HotelType.idHotelType
+            WHERE pic LIKE 'http%'
+                ORDER BY Area, Type ,Placename desc
+                LIMIT 8,1
+          ");?>
               <div class="item active">
                 <div class="hero-unit">
                   <div class="row-fluid">
                     <div class="span7 marketting-info">
-                      <h1>TELL ABOUT YOUR ANOTHER PRODUCT</h1>
+                        <?php 
+                        $result = mysqli_fetch_array($out)?>
+                        <h1><?echo $result['PlaceName'];?></h1>
                       <p>
-                        Get excited about our products.We build awesome products in mobile.
-                        We build awesome products in mobile.We build awesome products in mobile.
+                            <?echo $result['address'];?><br>
+                            <?echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?echo '<b>ประเภท:</b> '.$result['Type'];?>
+                                                    <br><br>
                       </p>
                       <h3>
-                        <a href="#" class="btn btn-primary">Buy now</a>
-                        <a href="product.php" class="btn">Learn more</a>
+                        <a href="<?echo $result['url'];?>" target="_blank" class="btn btn-info">More information</a>
                       </h3>                      
                     </div>
                     <div class="span5">
-                      <img src="img/placeholder.jpg" class="thumbnail">
+                      <img src="<?echo $result['pic']?>" class="bigbox">
                     </div>
                   </div>                  
                 </div>
@@ -160,128 +193,154 @@
       <!-- Start: PRODUCT LIST -->
         <div class="container">
           <div class="page-header">
-            <h2>Our products</h2>
+            <h2>Popular Hotel</h2>
           </div>
           <div class="row-fluid">
+            <?php $out = mysqli_query($con,"SELECT Place.name as PlaceName,Place.address,Place.url,Place.pic,Area.name as Area ,HotelType.HotelTypeName as Type ,SUM(Review.rating)/count(Review.rating) as rating
+                    FROM Place,Hotel,Review,Area,HotelType WHERE Place.idPlace = Hotel.idHotel and Review.idPlace = Place.idPlace and Place.Area_id = Area.idArea and Hotel.type = HotelType.idHotelType 
+                    and Place.pic LIKE 'http%' group by Place.idPlace order by rating desc ,ISNULL(Place.pic), Place.pic asc LIMIT 8,3"
+            );?>
+            <? while($result = mysqli_fetch_array($out)){?>
             <ul class="thumbnails">
               <li class="span4">
                 <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
+                  <img src="<?echo $result['pic'];?>" class="box" alt="product name">
+                  
                   <div class="caption">
-                    <h3>Product name</h3>
-                    <p>
-                      Few attractive words about your product.Few attractive words about your product.
-                      Few attractive words about your product.Few attractive words about your product.
-                    </p>
-                  </div>
+                        <h1><?echo $result['PlaceName'];?></h1>
+                      <p>
+                            <?echo $result['address'];?><br>
+                            <?echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?echo '<b>ประเภท:</b> '.$result['Type'];?><br>
+                            <?echo '<br><b>เรตติ่ง: </b>'.number_format($result['rating'], 1, '.', '');?>
+                                                    <br><br>
+                  </p>
                   <div class="widget-footer">
                     <p>
-                      <a href="#" class="btn btn-primary">Buy now</a>&nbsp;
-                      <a href="product.php" class="btn">Read more</a>
+                      <a href="<?echo $result['url'];?>" class="btn btn-info">Read more</a>
                     </p>
                   </div>
                 </div>
               </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
-                  <div class="caption">
-                    <h3>Product name</h3>
-                    <p>
-                      Few attractive words about your product.Few attractive words about your product.
-                      Few attractive words about your product.Few attractive words about your product.
-                    </p>
-                  </div>
-                  <div class="widget-footer">
-                    <p>
-                      <a href="#" class="btn btn-primary">Buy now</a>&nbsp;
-                      <a href="product.php" class="btn">Read more</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
-                  <div class="caption">
-                    <h3>Product name</h3>
-                    <p>
-                      Few attractive words about your product.Few attractive words about your product.
-                      Few attractive words about your product.Few attractive words about your product.
-                    </p>
-                  </div>
-                  <div class="widget-footer">
-                    <p>
-                      <a href="#" class="btn btn-primary">Buy now</a>&nbsp;
-                      <a href="product.php" class="btn">Read more</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
+              <?}?>
             </ul>
           </div>
+
           <div class="page-header">
-            <h2>Our Services</h2>
+            <h2>Popular Attraction</h2>
           </div>
           <div class="row-fluid">
+            <?php $out = mysqli_query($con,"SELECT Place.name as PlaceName,Place.address,Place.url,Place.pic,Area.name as Area ,AttractionType.AttractionTypeName as Type ,SUM(Review.rating)/count(Review.rating) as rating
+          FROM Place,Attraction,Review,Area,AttractionType WHERE Place.idPlace = Attraction.idAttraction and Review.idPlace = Place.idPlace and Place.Area_id = Area.idArea 
+          and Attraction.type = AttractionType.idAttractionType group by Place.idPlace order by rating desc ,ISNULL(Place.pic), Place.pic asc LIMIT 8,3;"
+
+          );?>
+            <? while($result = mysqli_fetch_array($out)){?>
             <ul class="thumbnails">
               <li class="span4">
                 <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
+                  <img src="<?echo $result['pic'];?>" class="box" alt="product name">
+                  
                   <div class="caption">
-                    <h3>Service title</h3>
-                    <p>
-                      Few attractive words about your service.Few attractive words about your service.
-                      Few attractive words about your service.Few attractive words about your service.
-                    </p>
-                  </div>
+                        <h1><?echo $result['PlaceName'];?></h1>
+                      <p>
+                            <?echo $result['address'];?><br>
+                            <?echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?echo '<b>ประเภท:</b> '.$result['Type'];?><br>
+                            <?echo '<br><b>เรตติ่ง: </b>'.number_format($result['rating'], 1, '.', '');?>
+                                                    <br><br>
+                  </p>
                   <div class="widget-footer">
                     <p>
-                      <a href="#" class="btn btn-primary">Try for free</a>&nbsp;
-                      <a href="product.php" class="btn">Read more</a>
+                      <a href="<?echo $result['url'];?>" class="btn btn-info">Read more</a>
                     </p>
                   </div>
                 </div>
               </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
-                  <div class="caption">
-                    <h3>Service title</h3>
-                    <p>
-                      Few attractive words about your service.Few attractive words about your service.
-                      Few attractive words about your service.Few attractive words about your service.
-                    </p>
-                  </div>
-                  <div class="widget-footer">
-                    <p>
-                      <a href="#" class="btn btn-primary">Try for free</a>&nbsp;
-                      <a href="product.php" class="btn">Read more</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/placeholder-360x200.jpg" alt="product name">
-                  <div class="caption">
-                    <h3>Service title</h3>
-                    <p>
-                      Few attractive words about your service.Few attractive words about your service.
-                      Few attractive words about your service.Few attractive words about your service.
-                    </p>
-                  </div>
-                  <div class="widget-footer">
-                    <p>
-                      <a href="#" class="btn btn-primary">Try for free</a>&nbsp;
-                      <a href="product.php" class="btn">Read more</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
+              <?}?>
             </ul>
           </div>
-        </div>
+
+          <div class="page-header">
+            <h2>Popular Shopping</h2>
+          </div>
+          <div class="row-fluid">
+            <?php $out = mysqli_query($con,
+          "SELECT idPlace, Place.name as PlaceName, Area.name as Area,ShopType.ShopTypeName as Type,address,url,pic
+          FROM (Place INNER JOIN Shop on Place.idPlace=Shop.idShop) INNER JOIN ShopType on Shop.type = ShopType.idShopType ,Area
+          WHERE Area.idArea = Area_id and Area_id IN (SELECT Area.idArea FROM Area,Place WHERE Place.Area_id = Area.idArea)
+          and pic LIKE 'http%'
+          ORDER BY Area, Type ,Placename desc
+          LIMIT 2,3
+          ");?>
+            <? while($result = mysqli_fetch_array($out)){?>
+            <ul class="thumbnails">
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="<?echo $result['pic'];?>" class="box" alt="product name">
+                  
+                  <div class="caption">
+                        <h1><?echo $result['PlaceName'];?></h1>
+                      <p>
+                            <?echo $result['address'];?><br>
+                            <?echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?echo '<b>ประเภท:</b> '.$result['Type'];?><br>
+                            <?echo '<br><b>เรตติ่ง: </b>'.number_format($result['rating'], 1, '.', '');?>
+                                                    <br><br>
+                  </p>
+                  <div class="widget-footer">
+                    <p>
+                      <a href="<?echo $result['url'];?>" class="btn btn-info">Read more</a>
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <?}?>
+            </ul>
+          </div>
+
+          <div class="page-header">
+            <h2>Popular Area</h2>
+          </div>
+          <div class="row-fluid">
+            <?php $out = mysqli_query($con,"SELECT Area.name, COUNT( Review.rating ) AS numberComment
+            FROM (Place INNER JOIN Area ON Place.area_id = Area.idArea) INNER JOIN Review ON Review.idPlace = Place.idPlace 
+            GROUP BY Area.idArea order by numberComment desc LIMIT 0,3;"
+          );?>
+            <? while($result = mysqli_fetch_array($out)){?>
+            <ul class="thumbnails">
+              <li class="span4">
+                <div class="thumbnail">
+              
+                <? 
+                if($result['name'] == 'ปทุมวัน') {
+                  echo '<img src="img/d1.JPG" class="box" alt="product name">';
+                  $url = 'http://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%82%E0%B8%95%E0%B8%9B%E0%B8%97%E0%B8%B8%E0%B8%A1%E0%B8%A7%E0%B8%B1%E0%B8%99';
+                }else if($result['name'] == 'พระนคร'){
+                  echo '<img src="img/d2.jpg" class="box" alt="product name">';
+                  $url = 'http://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%82%E0%B8%95%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%99%E0%B8%84%E0%B8%A3';
+                }else {
+                  echo '<img src="img/d3.jpg" class="box" alt="product name">';
+                  $url = 'http://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%82%E0%B8%95%E0%B8%AA%E0%B8%B2%E0%B8%97%E0%B8%A3';
+                }
+                ?>
+
+                  
+                  <div class="caption">
+                  <p>
+                    <h1><?echo 'เขต '.$result['name'];?></h1>
+                  </p>
+                  <div class="widget-footer">
+                    <p>
+                     <a href="<?echo $url;?>" class="btn btn-info">Read more</a>
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <?}?>
+            </ul>
+          </div>
+          
       <!-- End: PRODUCT LIST -->
     </div>
     <!-- End: MAIN CONTENT -->
@@ -293,7 +352,6 @@
             <h4><i class="icon-star icon-white"></i> Information</h4>
             <nav>
               <ul class="quick-links">
-                    <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
                     <li><a href="restuarant.php">Restuarant</a></li>            
                     
@@ -334,6 +392,7 @@
       <div class="container">
         <p>
           © 2013 Hi! Bangkok All Rights Reserved.
+          <?mysqli_close($con);?>
         </p>
       </div>
     </footer>
