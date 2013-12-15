@@ -45,7 +45,7 @@
                     <li><a href="travel.php">Travel Place</a></li>
                     <li><a href="public.php">Government Office</a></li>
                     <li><a href="shopping.php">Shopping</a></li>
-                    <li><a href="product.php">Interesting Product</a></li>
+                    
                   </ul>                  
                 </li>
                 <li class="dropdown">
@@ -99,9 +99,7 @@
               <ul class="quick-links">
                     <li><a href="#">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
-                    <li><a href="restuarant.php">Restuarant</a></li>            
-                    
-                    
+                    <li><a href="restuarant.php">Restuarant</a></li>               
               </ul>
             </nav>
             <h4><i class="icon-cogs icon-white"></i> Place and Shopping</h4>
@@ -109,8 +107,7 @@
               <ul class="quick-links">
                 <li><a href="travel.php">Travel Place</a></li>
                 <li><a href="public.php">Government Office</a></li>
-                <li><a href="shopping.php">Shopping</a></li>
-                <li><a href="product.php">Interesting Product</a></li>           
+                <li><a href="shopping.php">Shopping</a></li>       
               </ul>
             </nav>
           </div>

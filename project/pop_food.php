@@ -45,7 +45,7 @@
                     <li><a href="travel.php">Travel Place</a></li>
                     <li><a href="public.php">Government Office</a></li>
                     <li><a href="shopping.php">Shopping</a></li>
-                    <li><a href="product.php">Interesting Product</a></li>
+                    
                   </ul>                  
                 </li>
                 <li class="dropdown">
@@ -113,7 +113,7 @@ FROM place,Restaurant,review,area,RestaurantType WHERE place.idPlace = Restauran
                 <li><a href="travel.php">Travel Place</a></li>
                 <li><a href="public.php">Government Office</a></li>
                 <li><a href="shopping.php">Shopping</a></li>
-                <li><a href="product.php">Interesting Product</a></li>           
+                         
               </ul>
             </nav>
           </div>
