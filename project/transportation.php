@@ -79,9 +79,6 @@
           <div class="row">
             <div class="span10 offset1">            
               <div class="row bottom-space">
-                <div class="span3 center-align">
-                  <img src="http://placehold.it/200x200" class="thumbnail">
-                </div>
                 <div class="span7">
                   <?php include 'print_list.php'; ?>
                 </div>

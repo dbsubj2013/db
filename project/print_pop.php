@@ -22,6 +22,7 @@ while($result = mysqli_fetch_array($out)){?>
 						        <?echo $result['address'];?><br>
                     <?echo '<b>เขต: </b>'.$result['Area'];?>
                     <?echo '<b>ประเภท: </b> '.$result['Type'];?>
+                    <?echo '<br><b>เรตติ่ง: </b>'.number_format($result['rating'], 2, '.', '');?>
 						<br><br>
 						<a href="<?echo $result['url'];?>" target="_blank">More detail</a>
 

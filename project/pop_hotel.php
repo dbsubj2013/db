@@ -68,7 +68,9 @@
     </header>
     <!-- End: HEADER -->
     <!-- Start: MAIN CONTENT -->
-    <?php $out = mysqli_query($con,"SELECT * FROM Place,Hotel WHERE place.idPlace = Hotel.idHotel");?>
+    <?php $out = mysqli_query($con,"SELECT place.name as PlaceName,place.address,place.url,place.pic,area.name as Area ,hotelType.HotelTypeName as Type ,SUM(review.rating)/count(review.rating) as rating
+FROM place,hotel,review,area,hotelType WHERE place.idPlace = hotel.idHotel and review.idPlace = place.idPlace and place.Area_id = area.idArea and hotel.type = hotelType.idHotelType group by place.idPlace order by rating desc"
+);?>
     <div class="content">
       <div class="container">
         
@@ -79,11 +81,8 @@
           <div class="row">
             <div class="span10 offset1">            
               <div class="row bottom-space">
-                <div class="span3 center-align">
-                  <img src="http://placehold.it/200x200" class="thumbnail">
-                </div>
                 <div class="span7">
-                   <?php include 'print_list.php'; ?>
+                   <?php include 'print_pop.php'; ?>
                 </div>
               </div>          
             </div>

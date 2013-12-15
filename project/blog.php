@@ -1,6 +1,4 @@
-<html lang="en">
-<?php include 'database_connect.php'; ?>
-<head>
+<html lang="en"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bootbusiness | Short description about company">
@@ -39,7 +37,7 @@
                     <li class="nav-header">Facilities</li>
                     <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
-                    <li><a href="Restaurant.php">Restaurant</a></li>            
+                    <li><a href="restuarant.php">Restuarant</a></li>            
                     <li class="divider"></li>
                     <li class="nav-header">Place & Shopping</li>
                     <li><a href="travel.php">Travel Place</a></li>
@@ -52,13 +50,13 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Top Review<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="pop_travel.php">Popular Travel</a></li>
-                    <li><a href="pop_hotel.php">Popular Hotel</a></li>
-                    <li><a href="pop_food.php">Popular Restaurant & Food</a></li>
+                    <li class="active"><a href="#">Popular Hotel</a></li>
+                    <li><a href="pop_food.php">Popular Restuarant & Food</a></li>
                   </ul>
                 </li>
                 
                 <li><a href="contact_us.php">Contact us</a></li>
-                <li class="active"><a href="#">Search<i class="icon-search"></i></a></li>
+                <li><a href="search.php">Search<i class="icon-search"></i></a></li>
               </ul>
             </div>
           </div>
@@ -67,76 +65,103 @@
       <!-- End: Navigation wrapper -->   
     </header>
     <!-- End: HEADER -->
-    <!-- Start: MAIN CONTENT -->
-    <div class="content">
+    <!-- Start: Main content -->
+    <div class="content">    
       <div class="container">
-        <article class="article">
-          <div class="page-header">
-            <h1>Search <i class="icon-search"></i><small></small></h1>
-            <div class="offset3">
-              <form action="search.php" method="get">
-                <table>
-                <tr>
-                  <td><h3>Type</h3></td>
-                  <td><h3>Distinct</h3></td>
-                </tr>
-                <tr>
-                  <td>
-                <select name="type">
-                    <option value="0">None</option>
-                    <option value="1">Transportation</option>
-                    <option value="2">Hotel</option>
-                    <option value="3">Travel Place</option>
-                    <option value="4">Shopping</option>
-                    <option value="5">Restaurant</option>
-                </select>
-              </td>
-                <td>
-                <select name="distinct">
-                    <option value="0">None</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-              </td>
-              </tr>
-              
-              <tr>
-              <td>
-                <button type="submit" class="btn btn-large btn-info">Search</button>
-              </td>
-            </tr>
-            </tr>
-                </table>
-
-              </form>
-            </td>
-          </div>
-
-          </div>
-          <?php if(!empty($_GET)){ ?>
-          <?php $out = mysqli_query($con,"SELECT * FROM Place,Restaurant WHERE place.idPlace = Restaurant.idRestaurant");?>
-            <div class="row">
-            <div class="span10 offset1">            
-              <div class="row bottom-space">
-                <div class="span7">
-                   <?php include 'print_list.php'; ?>
-                </div>
-              </div>                          
+        <!-- Start: Product description -->
+        <airticle class="article">
+          <div class="row bottom-space">
+            <div class="span12">
+              <div class="page-header">
+                <h1>Product <small>Caption for the product</small></h1>
+              </div>
             </div>
-
-
-            <?php } ?>
+            <div class="span12 center-align">
+              <img src="http://placehold.it/800x300" class="thumbnail product-snap">            
+            </div>
           </div>
-        <article>
-      </article></article></div>
+          <div class="row">
+            <div class="span10 offset1">
+              <p>
+                Detailed description about the product that how it makes the customer's life easy.
+                Detailed description about the product that how it makes the customer's life easy.
+                Detailed description about the product that how it makes the customer's life easy.
+                Detailed description about the product that how it makes the customer's life easy.
+              </p>
+              <p>
+                Detailed description about the product that how it makes the customer's life easy.
+                Detailed description about the product that how it makes the customer's life easy.
+                Detailed description about the product that how it makes the customer's life easy.
+                Detailed description about the product that how it makes the customer's life easy.
+              </p>
+              <p>
+                Detailed description about the product that how it makes the customer's life easy.
+                Detailed description about the product that how it makes the customer's life easy.
+                Detailed description about the product that how it makes the customer's life easy.
+                Detailed description about the product that how it makes the customer's life easy.
+              </p>        
+              <div class="span8 offset1">
+                <h3>Fetures of product1</h3>
+                <ul class="features">
+                  <li>
+                    <i class="icon-ok "></i>24 hrs support
+                  </li>
+                  <li>
+                    <i class="icon-ok "></i>unlimited download
+                  </li>
+                  <li>
+                    <i class="icon-ok "></i>unlimited download
+                  </li>
+                  <li>
+                    <i class="icon-ok "></i>unlimited download
+                  </li>
+                  <li>
+                    <i class="icon-ok "></i>unlimited download
+                  </li>
+                  <li>
+                    <i class="icon-ok "></i>unlimited download
+                  </li>
+                  <li>
+                    <i class="icon-ok "></i>unlimited download
+                  </li>
+                  <li>
+                    <i class="icon-ok "></i>unlimited download
+                  </li>                  
+                </ul>
+              </div>                                              
+            </div>      
+          </div>
+          <div class="row">
+            <div class="span10 offset1">
+              <hr>
+              <div class="span3">
+                <p>
+                  Ready to start the innovation?
+                </p>
+                <a class="btn btn-large btn-block" href="#">Buy now</a>
+              </div>
+              <div class="span3">
+                <p>
+                  Got confused?
+                </p>
+                <a class="btn btn-large btn-block" href="contact_us.html">Contact us</a>
+              </div>
+              <div class="span3">
+                <p>
+                  Check frequently asked question
+                </p>
+                <a class="btn btn-large btn-block" href="faq.html">FAQ</a>
+              </div>              
+            </div>
+          </div>
+        </airticle>
+        <!-- End: Product description -->
+      </div>
     </div>
-
-    <!-- End: MAIN CONTENT -->
+    
+    <!-- End: Main content -->
     <!-- Start: FOOTER -->
-    <footer>
+   <footer>
       <div class="container">
         <div class="row">
           <div class="span2">
@@ -145,7 +170,7 @@
               <ul class="quick-links">
                     <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
-                    <li><a href="Restaurant.php">Restaurant</a></li>            
+                    <li><a href="restuarant.php">Restuarant</a></li>            
                     
                     
               </ul>
@@ -165,8 +190,8 @@
             <nav>
               <ul class="quick-links">
                 <li><a href="pop_travel.php">Popular Travel</a></li>
-                <li><a href="pop_hotel.php">Popular Hotel</a></li>
-                <li><a href="pop_food.php">Popular Restaurant & Food</a></li>
+                <li><a href="#">Popular Hotel</a></li>
+                <li><a href="pop_food.php">Popular Restuarant & Food</a></li>
               <ul>
             </ul></ul></nav>          
           </div>
@@ -192,6 +217,4 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/boot-business.js"></script>
   
-</body>
-<?php mysqli_close($con); ?>
-</html>
+</body></html>
