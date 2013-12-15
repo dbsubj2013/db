@@ -81,9 +81,39 @@
                   <td><h3>Distinct</h3></td>
                 </tr>
                 <tr>
+                  <?php if(!empty($_GET)){ ?>
                   <td>
-                <select name="type">
-                    <option value="0">None</option>
+                  <select id="type" name="type">
+                    <option value="TransitPlace" <?php if($_GET["type"] == "TransitPlace"){
+                      echo " selected='selected'";} ?>
+                    >Transportation</option>
+                    <option value="Hotel" <?php if($_GET["type"] == "Hotel"){
+                      echo " selected='selected'";} ?>>Hotel</option>
+                    <option value="Attraction" <?php if($_GET["type"] == "Attraction"){
+                      echo " selected='selected'";} ?>>Travel Place</option>
+                    <option value="Shop" <?php if($_GET["type"] == "Shop"){
+                      echo " selected='selected'";} ?>>Shopping</option>
+                    <option value="Restaurant" <?php if($_GET["type"] == "Restaurant"){
+                      echo " selected='selected'";} ?>>Restaurant</option>
+                </select>
+              </td>
+                <td>
+                <select id="distinct" name="distinct">
+                    <option value="1"<?php if($_GET["distinct"] == "1"){
+                      echo " selected='selected'";} ?>>พญาไท</option>
+                    <option value="2"<?php if($_GET["distinct"] == "2"){
+                      echo " selected='selected'";} ?>>สาทร</option>
+                    <option value="3"<?php if($_GET["distinct"] == "3"){
+                      echo " selected='selected'";} ?>>ดุสิต</option>
+                    <option value="4"<?php if($_GET["distinct"] == "4"){
+                      echo " selected='selected'";} ?>>พระนคร</option>
+                    <option value="5"<?php if($_GET["distinct"] == "5"){
+                      echo " selected='selected'";} ?>>ปทุมวัน</option>
+                </select>
+              </td>
+              <?php }else{ ?>
+                <td>
+                  <select name="type">
                     <option value="TransitPlace">Transportation</option>
                     <option value="Hotel">Hotel</option>
                     <option value="Attraction">Travel Place</option>
@@ -93,7 +123,6 @@
               </td>
                 <td>
                 <select name="distinct">
-                    <option value="0">None</option>
                     <option value="1">พญาไท</option>
                     <option value="2">สาทร</option>
                     <option value="3">ดุสิต</option>
@@ -101,6 +130,7 @@
                     <option value="5">ปทุมวัน</option>
                 </select>
               </td>
+              <?php } ?>
               </tr>
               
               <tr>
@@ -121,20 +151,11 @@
                 $area = $_GET["distinct"];
            ?>
           <?php 
-          if($type != '0'){}
           $out = mysqli_query($con,"SELECT place.name as PlaceName, place.address,place.url,place.pic,area.name as Area 
-          ,".type."Type.".type."TypeName as Type ,SUM(review.rating)/count(review.rating) as rating
-          FROM place,".type.",review,area,".type."Type WHERE place.idPlace = ".type.".id".type." and review.idPlace = place.idPlace and
-          place.Area_id = area.idArea and ".type.".type = ".type."Type.id".type."Type group by place.idPlace order by rating desc ,ISNULL(place.pic), place.pic asc;"
+          ,".$type."Type.".$type."TypeName as Type 
+          FROM place,".$type.",area,".$type."Type WHERE place.idPlace = ".$type.".id".$type." and
+          place.Area_id = area.idArea and ".$type.".type = ".$type."Type.id".$type."Type and area.idArea = ".$area." group by place.name order by ISNULL(place.pic), place.pic asc;"
           );
-          }
-          else{
-              $out = mysqli_query($con,"SELECT place.name as PlaceName, place.address,place.url,place.pic,area.name as Area 
-          ,AttractionType.AttractionTypeName as Type ,SUM(review.rating)/count(review.rating) as rating
-          FROM place,Attraction,review,area,AttractionType WHERE place.idPlace = Attraction.idAttraction and review.idPlace = place.idPlace and
-          place.Area_id = area.idArea and Attraction.type = AttractionType.idAttractionType group by place.idPlace order by rating desc ,ISNULL(place.pic), place.pic asc;"
-          );
-          }
           ?>
             <div class="row">
             <div class="span10 offset1">            

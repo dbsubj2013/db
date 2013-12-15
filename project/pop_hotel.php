@@ -69,7 +69,7 @@
     <!-- End: HEADER -->
     <!-- Start: MAIN CONTENT -->
     <?php $out = mysqli_query($con,"SELECT place.name as PlaceName,place.address,place.url,place.pic,area.name as Area ,hotelType.HotelTypeName as Type ,SUM(review.rating)/count(review.rating) as rating
-FROM place,hotel,review,area,hotelType WHERE place.idPlace = hotel.idHotel and review.idPlace = place.idPlace and place.Area_id = area.idArea and hotel.type = hotelType.idHotelType group by place.idPlace order by rating desc ,ISNULL(place.pic), place.pic asc"
+FROM place,hotel,review,area,hotelType WHERE place.idPlace = hotel.idHotel and review.idPlace = place.idPlace and place.Area_id = area.idArea and hotel.type = hotelType.idHotelType group by place.name order by rating desc ,ISNULL(place.pic), place.pic asc"
 );?>
     <div class="content">
       <div class="container">
