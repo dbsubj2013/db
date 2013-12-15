@@ -1,5 +1,6 @@
 <html lang="en"><head>
     <meta charset="utf-8">
+    <?php include 'database_connect.php'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bootbusiness | Short description about company">
     <meta name="author" content="Your name">
@@ -101,32 +102,17 @@
                 Detailed description about the product that how it makes the customer's life easy.
               </p>        
               <div class="span8 offset1">
+
+                <?php $out = mysqli_query($con,"SELECT * FROM Review WHERE idReview = 11");?>
                 <h3>Comments</h3>
                 <ul class="features">
-                  <li>
-                    <i class="icon-ok "></i>24 hrs support
+                  <?php 
+                    while($result = mysqli_fetch_array($out)){?>
+                  <li class="well">
+                    <i class="icon-hand-right "></i><?echo $result['comment']?>
                   </li>
-                  <li>
-                    <i class="icon-ok "></i>unlimited download
-                  </li>
-                  <li>
-                    <i class="icon-ok "></i>unlimited download
-                  </li>
-                  <li>
-                    <i class="icon-ok "></i>unlimited download
-                  </li>
-                  <li>
-                    <i class="icon-ok "></i>unlimited download
-                  </li>
-                  <li>
-                    <i class="icon-ok "></i>unlimited download
-                  </li>
-                  <li>
-                    <i class="icon-ok "></i>unlimited download
-                  </li>
-                  <li>
-                    <i class="icon-ok "></i>unlimited download
-                  </li>                  
+                  <hr>   
+                  <?}?>
                 </ul>
               </div>                                              
             </div>      
