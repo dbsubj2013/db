@@ -37,7 +37,6 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Information<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li class="nav-header">Facilities</li>
-                    <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
                     <li><a href="Restaurant.php">Restaurant</a></li>            
                     <li class="divider"></li>
