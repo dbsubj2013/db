@@ -24,7 +24,7 @@ while($result = mysqli_fetch_array($out)){?>
                     <?echo '<b>ประเภท: </b> '.$result['Type'];?>
                     <?echo '<br><b>เรตติ่ง: </b>'.number_format($result['rating'], 1, '.', '');?>
 						<br><br>
-						<a href="<?echo 'detail.php?id='.$result['id'];?>" target="_blank">More detail</a>
+						<a href="<?echo 'detail.php?id='.$result['id'];?>" target="_blank" class="btn btn-info">More information</a>
 
                   </p>
                 </div>

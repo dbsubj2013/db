@@ -102,7 +102,7 @@
                     <?echo $result['address'];?><br>
                     <?echo '<b>เขต: </b>'.$result['Area'];?>
             <br><br>
-            <a href="<?echo $result['url'];?>" target="_blank">More detail</a>
+            <a href="<?echo $result['url'];?>" target="_blank" class="btn btn-success">More detail</a>
               </p>
                      
               <div class="row">
