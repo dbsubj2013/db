@@ -68,7 +68,13 @@
     </header>
     <!-- End: HEADER -->
     <!-- Start: MAIN CONTENT -->
-    <?php $out = mysqli_query($con,"SELECT * FROM Place,Goverment_Office WHERE place.idPlace = Goverment_Office.idGoverment ");?>
+    <?php $out = mysqli_query($con,
+        "SELECT idPlace, Place.name as PlaceName, Area.name as Area,Goverment_OfficeType.Goverment_OfficeTypeName as Type,address,url,pic
+        FROM ((Place INNER JOIN Goverment_Office on Place.idPlace=Goverment_Office.idGoverment_Office)
+            INNER JOIN Area on Place.Area_id=Area.idArea)
+            INNER JOIN Goverment_OfficeType on Goverment_Office.type = Goverment_OfficeType.idGoverment_OfficeType
+        ORDER BY Area, Type ,Placename desc
+        ");?>
     <div class="content">
       <div class="container">
         
@@ -76,18 +82,7 @@
           <div class="page-header">
             <h1>Government Office <i class="icon-user"></i>    <small> F.Y.I to contact zone. </small></h1>
           </div>
-          <div class="row">
-            <div class="span10 offset1">            
-              <div class="row bottom-space">
-                <div class="span3 center-align">
-                  <img src="http://placehold.it/200x200" class="thumbnail">
-                </div>
-                <div class="span7">
                    <?php include 'print_list.php'; ?>
-                </div>
-              </div>                     
-            </div>
-          </div>
         <article>
       </article></article></div>
     </div>

@@ -73,7 +73,7 @@
           FROM ((Place INNER JOIN Restaurant on Place.idPlace=Restaurant.idRestaurant)
                 INNER JOIN Area on Place.Area_id=Area.idArea)
                 INNER JOIN RestaurantType on Restaurant.type = RestaurantType.idRestaurantType
-          ORDER BY Area, Type ,Placename desc
+          ORDER BY Area, Type ,Placename desc 
           ");?>
     <div class="content">
       <div class="container">

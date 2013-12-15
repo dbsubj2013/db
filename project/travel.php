@@ -73,7 +73,7 @@
       FROM ((Place INNER JOIN Attraction on Place.idPlace=Attraction.idAttraction)
               INNER JOIN Area on Place.Area_id=Area.idArea)
               INNER JOIN AttractionType on Attraction.type = AttractionType.idAttractionType
-      ORDER BY Area, Type ,Placename desc
+      ORDER BY Area, Type ,Placename desc 
     ");?>
     <div class="content">
       <div class="container">

@@ -1,6 +1,4 @@
-<html lang="en">
-<?php include 'database_connect.php'; ?>
-<head>
+<html lang="en"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bootbusiness | Short description about company">
@@ -39,21 +37,21 @@
                     <li class="nav-header">Facilities</li>
                     <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
-                    <li><a href="Restaurant.php">Restaurant</a></li>            
+                    <li><a href="restuarant.php">Restuarant</a></li>            
                     <li class="divider"></li>
                     <li class="nav-header">Place & Shopping</li>
                     <li><a href="travel.php">Travel Place</a></li>
                     <li><a href="public.php">Government Office</a></li>
                     <li><a href="shopping.php">Shopping</a></li>
-                    
+                    <li class="active"><a href="#">Interesting Product</a></li>
                   </ul>                  
                 </li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Top Review<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="pop_travel.php">Popular Travel</a></li>
-                    <li class="active"><a href="#">Popular Hotel</a></li>
-                    <li><a href="pop_food.php">Popular Restaurant & Food</a></li>
+                    <li><a href="pop_hotel.php">Popular Hotel</a></li>
+                    <li><a href="pop_food.php">Popular Restuarant & Food</a></li>
                   </ul>
                 </li>
                 
@@ -68,29 +66,56 @@
     </header>
     <!-- End: HEADER -->
     <!-- Start: MAIN CONTENT -->
-    <?php $out = mysqli_query($con,"SELECT place.name as PlaceName,place.address,place.url,place.pic,area.name as Area ,hotelType.HotelTypeName as Type ,SUM(review.rating)/count(review.rating) as rating
-FROM place,hotel,review,area,hotelType WHERE place.idPlace = hotel.idHotel and review.idPlace = place.idPlace and place.Area_id = area.idArea and hotel.type = hotelType.idHotelType group by place.idPlace order by rating desc ,ISNULL(place.pic), place.pic asc"
-);?>
     <div class="content">
       <div class="container">
         
           <article class="article">
           <div class="page-header">
-            <h1>Popular Hotel <i class="icon-star"></i>    <small>Where is the best place to stay in the Bangkok?</small></h1>
+            <h1>Product <i class="icon-star"></i>    <small> Get the cool stuffs.</small></h1>
           </div>
           <div class="row">
             <div class="span10 offset1">            
               <div class="row bottom-space">
-                <div class="span7">
-                   <?php include 'print_pop.php'; ?>
+                <div class="span3 center-align">
+                  <img src="http://placehold.it/200x200" class="thumbnail">
                 </div>
-              </div>          
+                <div class="span7">
+                  <p class="team-member-description">
+                    Short discription about your team member.Short discription about your team member.
+                    Short discription about your team member.Short discription about your team member.
+                    Short discription about your team member.Short discription about your team member.
+                  </p>
+                </div>
+              </div>
+              <div class="row bottom-space">
+                <div class="span3 center-align">
+                  <img src="http://placehold.it/200x200" class="thumbnail">
+                </div>
+                <div class="span7">
+                  <p class="team-member-description">
+                    Short discription about your team member.Short discription about your team member.
+                    Short discription about your team member.Short discription about your team member.
+                    Short discription about your team member.Short discription about your team member.
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span3 center-align">
+                  <img src="http://placehold.it/200x200" class="thumbnail">
+                </div>
+                <div class="span7">
+                  <p class="team-member-description">
+                    Short discription about your team member.Short discription about your team member.
+                    Short discription about your team member.Short discription about your team member.
+                    Short discription about your team member.Short discription about your team member.
+                  </p>
+                </div>
+              </div>                            
             </div>
           </div>
         <article>
       </article></article></div>
     </div>
-    <?php mysqli_close($con); ?>
     <!-- End: MAIN CONTENT -->
     <!-- Start: FOOTER -->
     <footer>
@@ -102,7 +127,7 @@ FROM place,hotel,review,area,hotelType WHERE place.idPlace = hotel.idHotel and r
               <ul class="quick-links">
                     <li><a href="transportation.php">Transportation</a></li>
                     <li><a href="hotel.php">Hotel</a></li>
-                    <li><a href="Restaurant.php">Restaurant</a></li>            
+                    <li><a href="restuarant.php">Restuarant</a></li>            
                     
                     
               </ul>
@@ -113,7 +138,7 @@ FROM place,hotel,review,area,hotelType WHERE place.idPlace = hotel.idHotel and r
                 <li><a href="travel.php">Travel Place</a></li>
                 <li><a href="public.php">Government Office</a></li>
                 <li><a href="shopping.php">Shopping</a></li>
-                          
+                <li><a href="#">Interesting Product</a></li>           
               </ul>
             </nav>
           </div>
@@ -122,8 +147,8 @@ FROM place,hotel,review,area,hotelType WHERE place.idPlace = hotel.idHotel and r
             <nav>
               <ul class="quick-links">
                 <li><a href="pop_travel.php">Popular Travel</a></li>
-                <li><a href="#">Popular Hotel</a></li>
-                <li><a href="pop_food.php">Popular Restaurant & Food</a></li>
+                <li><a href="pop_hotel.php">Popular Hotel</a></li>
+                <li><a href="pop_food.php">Popular Restuarant & Food</a></li>
               <ul>
             </ul></ul></nav>          
           </div>
