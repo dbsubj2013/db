@@ -45,7 +45,7 @@
                     <li><a href="travel.php">Travel Place</a></li>
                     <li><a href="public.php">Government Office</a></li>
                     <li class="active"><a href="shopping.php">Shopping</a></li>
-                    <li><a href="product.php">Interesting Product</a></li>
+                    
                   </ul>                  
                 </li>
                 <li class="dropdown">
@@ -107,8 +107,7 @@
               <ul class="quick-links">
                 <li><a href="travel.php">Travel Place</a></li>
                 <li><a href="public.php">Government Office</a></li>
-                <li><a href="shopping.php">Shopping</a></li>
-                <li><a href="product.php">Interesting Product</a></li>           
+                <li><a href="shopping.php">Shopping</a></li>         
               </ul>
             </nav>
           </div>
