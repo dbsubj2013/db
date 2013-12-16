@@ -85,7 +85,7 @@
             <div class="carousel-inner">
 
               <?php $out = mysqli_query($con,
-      "SELECT idPlace, Place.name as PlaceName,place.idPlace as id , Area.name as Area,ShopType.ShopTypeName as Type,address,url,pic
+      "SELECT idPlace as id, Place.name as PlaceName, Area.name as Area,ShopType.ShopTypeName as Type,address,url,pic
       FROM (Place INNER JOIN Shop on Place.idPlace=Shop.idShop) INNER JOIN ShopType on Shop.type = ShopType.idShopType ,Area
       WHERE Area.idArea = Area_id and Area_id IN (SELECT Area.idArea FROM Area,Place WHERE Place.Area_id = Area.idArea) 
       and pic LIKE 'http%'
@@ -118,7 +118,7 @@
               </div>
 
               <?php $out = mysqli_query($con,
-          "SELECT idPlace, Place.name as PlaceName,place.idPlace as id, Area.name as Area,RestaurantType.RestaurantTypeName as Type,address,url,pic
+          "SELECT idPlace as id, Place.name as PlaceName, Area.name as Area,RestaurantType.RestaurantTypeName as Type,address,url,pic
           FROM ((Place INNER JOIN Restaurant on Place.idPlace=Restaurant.idRestaurant)
                 INNER JOIN Area on Place.Area_id=Area.idArea)
                 INNER JOIN RestaurantType on Restaurant.type = RestaurantType.idRestaurantType
@@ -152,7 +152,7 @@
               </div>
 
             <?php $out = mysqli_query($con,
-              "SELECT idPlace, Place.name as PlaceName,place.idPlace as id, Area.name as Area,HotelType.HotelTypeName as Type,address,url,pic
+              "SELECT idPlace as id, Place.name as PlaceName, Area.name as Area,HotelType.HotelTypeName as Type,address,url,pic
                 FROM ((Place INNER JOIN Hotel on Place.idPlace=Hotel.idHotel)
             INNER JOIN Area on Place.Area_id=Area.idArea)
             INNER JOIN HotelType on Hotel.type = HotelType.idHotelType
@@ -196,7 +196,7 @@
             <h2>Popular Hotel</h2>
           </div>
           <div class="row-fluid">
-            <?php $out = mysqli_query($con,"SELECT Place.name as PlaceName,place.idPlace as id,Place.address,Place.url,Place.pic,Area.name as Area ,HotelType.HotelTypeName as Type ,SUM(Review.rating)/count(Review.rating) as rating
+            <?php $out = mysqli_query($con,"SELECT Place.name as PlaceName,Place.idPlace as id,Place.address,Place.url,Place.pic,Area.name as Area ,HotelType.HotelTypeName as Type ,SUM(Review.rating)/count(Review.rating) as rating
                     FROM Place,Hotel,Review,Area,HotelType WHERE Place.idPlace = Hotel.idHotel and Review.idPlace = Place.idPlace and Place.Area_id = Area.idArea and Hotel.type = HotelType.idHotelType 
                     and Place.pic LIKE 'http%' group by Place.idPlace order by rating desc ,ISNULL(Place.pic), Place.pic asc LIMIT 8,3"
             );?>
@@ -230,7 +230,7 @@
             <h2>Popular Attraction</h2>
           </div>
           <div class="row-fluid">
-            <?php $out = mysqli_query($con,"SELECT Place.name as PlaceName,place.idPlace as id,Place.address,Place.url,Place.pic,Area.name as Area ,AttractionType.AttractionTypeName as Type ,SUM(Review.rating)/count(Review.rating) as rating
+            <?php $out = mysqli_query($con,"SELECT Place.name as PlaceName,Place.idPlace as id,Place.address,Place.url,Place.pic,Area.name as Area ,AttractionType.AttractionTypeName as Type ,SUM(Review.rating)/count(Review.rating) as rating
           FROM Place,Attraction,Review,Area,AttractionType WHERE Place.idPlace = Attraction.idAttraction and Review.idPlace = Place.idPlace and Place.Area_id = Area.idArea 
           and Attraction.type = AttractionType.idAttractionType group by Place.idPlace order by rating desc ,ISNULL(Place.pic), Place.pic asc LIMIT 8,3;"
 
@@ -265,7 +265,7 @@
             <h2>Popular Shopping</h2>
           </div>
           <div class="row-fluid">
-         <?php $out = mysqli_query($con,"SELECT Place.name as PlaceName,place.idPlace as id,Place.address,Place.url,Place.pic,Area.name as Area ,ShopType.ShopTypeName as Type ,SUM(Review.rating)/count(Review.rating) as rating
+         <?php $out = mysqli_query($con,"SELECT Place.name as PlaceName,Place.idPlace as id,Place.address,Place.url,Place.pic,Area.name as Area ,ShopType.ShopTypeName as Type ,SUM(Review.rating)/count(Review.rating) as rating
           FROM Place,Shop,Review,Area,ShopType WHERE Place.idPlace = Shop.idShop and Review.idPlace = Place.idPlace and Place.Area_id = Area.idArea 
           and Shop.type = ShopType.idShopType group by Place.idPlace order by rating desc ,ISNULL(Place.pic), Place.pic asc LIMIT 1,3");
             while($result = mysqli_fetch_array($out)){?>

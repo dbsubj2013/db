@@ -67,8 +67,8 @@
     </header>
     <!-- End: HEADER -->
     <!-- Start: MAIN CONTENT -->
-   <?php $out = mysqli_query($con,"SELECT place.name as PlaceName, Place.idPlace as id,place.address,place.url,place.pic,area.name as Area ,RestaurantType.RestaurantTypeName as Type ,SUM(review.rating)/count(review.rating) as rating
-FROM place,Restaurant,review,area,RestaurantType WHERE place.idPlace = Restaurant.idRestaurant and review.idPlace = place.idPlace and place.Area_id = area.idArea and Restaurant.type = RestaurantType.idRestaurantType group by place.name order by rating desc ,ISNULL(place.pic), place.pic asc"
+   <?php $out = mysqli_query($con,"SELECT Place.name as PlaceName, Place.idPlace as id,Place.address,Place.url,Place.pic,Area.name as Area ,RestaurantType.RestaurantTypeName as Type ,SUM(Review.rating)/count(Review.rating) as rating
+FROM Place,Restaurant,Review,Area,RestaurantType WHERE Place.idPlace = Restaurant.idRestaurant and Review.idPlace = Place.idPlace and Place.Area_id = Area.idArea and Restaurant.type = RestaurantType.idRestaurantType group by Place.name order by rating desc ,ISNULL(Place.pic), Place.pic asc"
 );?>
     <div class="content">
       <div class="container">

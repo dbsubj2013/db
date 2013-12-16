@@ -73,8 +73,8 @@
       <div class="container">
         <!-- Start: Product description -->
         <?php if(!empty($_GET)){ ?>
-        <?php $out = mysqli_query($con,"SELECT place.name as PlaceName,place.pic,place.url, area.name as Area , place.address FROM Place inner join Area on place.area_id = Area.idArea
-        WHERE place.idPlace = ".$_GET["id"]);
+        <?php $out = mysqli_query($con,"SELECT Place.name as PlaceName,Place.pic,Place.url, Area.name as Area , Place.address FROM Place inner join Area on Place.area_id = Area.idArea
+        WHERE Place.idPlace = ".$_GET["id"]);
         while($result = mysqli_fetch_array($out)){
         ?>
         <? 
@@ -108,7 +108,7 @@
               <div class="row">
              <?php }?> 
                 
-                <?php $out = mysqli_query($con,"SELECT Review.rating,Review.comment FROM Place inner join Review on place.idPlace = Review.idPlace where place.idPlace =".$_GET["id"]); ?>
+                <?php $out = mysqli_query($con,"SELECT Review.rating,Review.comment FROM Place inner join Review on Place.idPlace = Review.idPlace where Place.idPlace =".$_GET["id"]); ?>
                 <? if ( mysqli_num_rows($out) != 0 ) { ?>
                 <h3>Comments</h3>
                 <? } ?>
