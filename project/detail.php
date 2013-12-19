@@ -77,7 +77,7 @@
         WHERE Place.idPlace = ".$_GET["id"]);
         while($result = mysqli_fetch_array($out)){
         ?>
-        <? 
+        <?php 
         if($result['pic']!='') 
                 $picture = $result['pic'];
               else 
@@ -91,36 +91,36 @@
               </div>
             </div>
             <div class="span12 center-align">
-              <img src="<?echo $picture;?>" class="thumbnail product-snap">            
+              <img src="<?php echo $picture;?>" class="thumbnail product-snap">            
             </div>
           </div>
           <div class="row">
 
             <div class="span10 offset1">
               <p>
-                <h4><?echo $result['PlaceName'];?></h4>
-                    <?echo $result['address'];?><br>
-                    <?echo '<b>เขต: </b>'.$result['Area'];?>
+                <h4><?php echo $result['PlaceName'];?></h4>
+                    <?php echo $result['address'];?><br>
+                    <?php echo '<b>เขต: </b>'.$result['Area'];?>
             <br><br>
-            <a href="<?echo $result['url'];?>" target="_blank" class="btn btn-success">More detail</a>
+            <a href="<?php echo $result['url'];?>" target="_blank" class="btn btn-success">More detail</a>
               </p>
                      
               <div class="row">
              <?php }?> 
                 
                 <?php $out = mysqli_query($con,"SELECT Review.rating,Review.comment FROM Place inner join Review on Place.idPlace = Review.idPlace where Place.idPlace =".$_GET["id"]); ?>
-                <? if ( mysqli_num_rows($out) != 0 ) { ?>
+                <?php if ( mysqli_num_rows($out) != 0 ) { ?>
                 <h3>Comments</h3>
-                <? } ?>
+                <?php } ?>
                 </ul>
                 <ul class="features">
                   <?php 
                   while($result = mysqli_fetch_array($out)){ ?>
                   <li class="well">
                     <ul>
-                    <li class="span3"><h3><i class="icon-star"></i> Rating : <?echo $result["rating"]?></h3></li>
+                    <li class="span3"><h3><i class="icon-star"></i> Rating : <?php echo $result["rating"]?></h3></li>
                     <i class="icon-hand-right "></i>
-                    <?if($result['comment'] == ""){ 
+                    <?php if($result['comment'] == ""){ 
                       echo ' No Comment.';
                     }
                     else{
@@ -129,7 +129,7 @@
                   </ul>
                   </li>
                   <hr>   
-                  <?}?>
+                  <?php }?>
                 </ul>
               </div>                                              
             </div> 

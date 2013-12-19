@@ -1,7 +1,7 @@
 <?php 
 while($result = mysqli_fetch_array($out)){?>
 
-			  <? 
+			  <?php  
 			  if($result['pic']!='') 
                 $picture = $result['pic'];
               else 
@@ -14,16 +14,16 @@ while($result = mysqli_fetch_array($out)){?>
               <div class="row bottom-space">
                 <div class="span3 center-align">
                   <!-- <img src="http://placehold.it/200x200" class="thumbnail"> -->
-                  <img src="<?echo $picture;?>" class="img-polaroid" width="200" height="200">
+                  <img src="<?php echo $picture;?>" class="img-polaroid" width="200" height="200">
                 </div>
                 <div class="span7">
                   <p class="team-member-description">
-                    <h4><?echo $result['PlaceName'];?></h4>
-						        <?echo $result['address'];?><br>
-                    <?echo '<b>เขต: </b>'.$result['Area'];?>
-                    <?echo '<b>ประเภท: </b> '.$result['Type'];?>
+                    <h4><?php echo $result['PlaceName'];?></h4>
+						        <?php echo $result['address'];?><br>
+                    <?php echo '<b>เขต: </b>'.$result['Area'];?>
+                    <?php echo '<b>ประเภท: </b> '.$result['Type'];?>
 						<br><br>
-						<a href="<?echo 'detail.php?id='.$result['id'];?>" class="btn btn-info">More information</a>
+						<a href="<?php echo 'detail.php?id='.$result['id'];?>" class="btn btn-info">More information</a>
 
                   </p>
                 </div>
@@ -32,4 +32,4 @@ while($result = mysqli_fetch_array($out)){?>
             </div>
           </div>
           <hr>
-<? } ?>
+<?php } ?>

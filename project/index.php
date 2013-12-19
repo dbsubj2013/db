@@ -98,19 +98,19 @@
                     <div class="span7 marketting-info">
                         <?php 
                         $result = mysqli_fetch_array($out)?>
-                        <h1><?echo $result['PlaceName'];?></h1>
+                        <h1><?php echo $result['PlaceName'];?></h1>
                       <p>
-                            <?echo $result['address'];?><br>
-                            <?echo '<b>เขต: </b>'.$result['Area'];?>
-                            <?echo '<b>ประเภท:</b> '.$result['Type'];?>
+                            <?php echo $result['address'];?><br>
+                            <?php echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?php echo '<b>ประเภท:</b> '.$result['Type'];?>
                                                     <br><br>
                       </p>
                       <h3>
-                        <a href="<?echo 'detail.php?id='.$result['id'];?>" target="_blank" class="btn btn-info">More information</a>
+                        <a href="<?php echo 'detail.php?id='.$result['id'];?>" target="_blank" class="btn btn-info">More information</a>
                       </h3>                      
                     </div>
                     <div class="span5">
-                      <img src="<?echo $result['pic']?>" class="bigbox">
+                      <img src="<?php echo $result['pic']?>" class="bigbox">
                       
                     </div>
                   </div>                  
@@ -132,19 +132,19 @@
                     <div class="span7 marketting-info">
                         <?php 
                         $result = mysqli_fetch_array($out)?>
-                        <h1><?echo $result['PlaceName'];?></h1>
+                        <h1><?php echo $result['PlaceName'];?></h1>
                       <p>
-                            <?echo $result['address'];?><br>
-                            <?echo '<b>เขต: </b>'.$result['Area'];?>
-                            <?echo '<b>ประเภท:</b> '.$result['Type'];?>
+                            <?php echo $result['address'];?><br>
+                            <?php echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?php echo '<b>ประเภท:</b> '.$result['Type'];?>
                                                     <br><br>
                       </p>
                       <h3>
-                        <a href="<?echo 'detail.php?id='.$result['id'];?>" target="_blank" class="btn btn-info">More information</a>
+                        <a href="<?php echo 'detail.php?id='.$result['id'];?>" target="_blank" class="btn btn-info">More information</a>
                       </h3>                      
                     </div>
                     <div class="span5">
-                      <img src="<?echo $result['pic']?>" class="bigbox">
+                      <img src="<?php echo $result['pic']?>" class="bigbox">
                       
                     </div>
                   </div>                  
@@ -166,19 +166,19 @@
                     <div class="span7 marketting-info">
                         <?php 
                         $result = mysqli_fetch_array($out)?>
-                        <h1><?echo $result['PlaceName'];?></h1>
+                        <h1><?php echo $result['PlaceName'];?></h1>
                       <p>
-                            <?echo $result['address'];?><br>
-                            <?echo '<b>เขต: </b>'.$result['Area'];?>
-                            <?echo '<b>ประเภท:</b> '.$result['Type'];?>
+                            <?php echo $result['address'];?><br>
+                            <?php echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?php echo '<b>ประเภท:</b> '.$result['Type'];?>
                                                     <br><br>
                       </p>
                       <h3>
-                        <a href="<?echo 'detail.php?id='.$result['id'];?>" target="_blank" class="btn btn-info">More information</a>
+                        <a href="<?php echo 'detail.php?id='.$result['id'];?>" target="_blank" class="btn btn-info">More information</a>
                       </h3>                      
                     </div>
                     <div class="span5">
-                      <img src="<?echo $result['pic']?>" class="bigbox">
+                      <img src="<?php echo $result['pic']?>" class="bigbox">
                     </div>
                   </div>                  
                 </div>
@@ -200,29 +200,29 @@
                     FROM Place,Hotel,Review,Area,HotelType WHERE Place.idPlace = Hotel.idHotel and Review.idPlace = Place.idPlace and Place.Area_id = Area.idArea and Hotel.type = HotelType.idHotelType 
                     and Place.pic LIKE 'http%' group by Place.idPlace order by rating desc ,ISNULL(Place.pic), Place.pic asc LIMIT 8,3"
             );?>
-            <? while($result = mysqli_fetch_array($out)){?>
+            <?php while($result = mysqli_fetch_array($out)){?>
             <ul class="thumbnails">
               <li class="span4">
                 <div class="thumbnail">
-                  <img src="<?echo $result['pic'];?>" class="box" alt="product name">
+                  <img src="<?php echo $result['pic'];?>" class="box" alt="product name">
                   
                   <div class="caption">
-                        <h1><?echo $result['PlaceName'];?></h1>
+                        <h1><?php echo $result['PlaceName'];?></h1>
                       <p>
-                            <?echo $result['address'];?><br>
-                            <?echo '<b>เขต: </b>'.$result['Area'];?>
-                            <?echo '<b>ประเภท:</b> '.$result['Type'];?><br>
-                            <?echo '<br><b>เรตติ่ง: </b>'.number_format($result['rating'], 1, '.', '');?>
+                            <?php echo $result['address'];?><br>
+                            <?php echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?php echo '<b>ประเภท:</b> '.$result['Type'];?><br>
+                            <?php echo '<br><b>เรตติ่ง: </b>'.number_format($result['rating'], 1, '.', '');?>
                                                     <br><br>
                   </p>
                   <div class="widget-footer">
                     <p>
-                      <a href="<?echo 'detail.php?id='.$result['id'];?>" class="btn btn-info">Read more</a>
+                      <a href="<?php echo 'detail.php?id='.$result['id'];?>" class="btn btn-info">Read more</a>
                     </p>
                   </div>
                 </div>
               </li>
-              <?}?>
+              <?php }?>
             </ul>
           </div>
 
@@ -235,29 +235,29 @@
           and Attraction.type = AttractionType.idAttractionType group by Place.idPlace order by rating desc ,ISNULL(Place.pic), Place.pic asc LIMIT 8,3;"
 
           );?>
-            <? while($result = mysqli_fetch_array($out)){?>
+            <?php while($result = mysqli_fetch_array($out)){?>
             <ul class="thumbnails">
               <li class="span4">
                 <div class="thumbnail">
-                  <img src="<?echo $result['pic'];?>" class="box" alt="product name">
+                  <img src="<?php echo $result['pic'];?>" class="box" alt="product name">
                   
                   <div class="caption">
-                        <h1><?echo $result['PlaceName'];?></h1>
+                        <h1><?php echo $result['PlaceName'];?></h1>
                       <p>
-                            <?echo $result['address'];?><br>
-                            <?echo '<b>เขต: </b>'.$result['Area'];?>
-                            <?echo '<b>ประเภท:</b> '.$result['Type'];?><br>
-                            <?echo '<br><b>เรตติ่ง: </b>'.number_format($result['rating'], 1, '.', '');?>
+                            <?php echo $result['address'];?><br>
+                            <?php echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?php echo '<b>ประเภท:</b> '.$result['Type'];?><br>
+                            <?php echo '<br><b>เรตติ่ง: </b>'.number_format($result['rating'], 1, '.', '');?>
                                                     <br><br>
                   </p>
                   <div class="widget-footer">
                     <p>
-                      <a href="<?echo 'detail.php?id='.$result['id'];?>" class="btn btn-info">Read more</a>
+                      <a href="<?php echo 'detail.php?id='.$result['id'];?>" class="btn btn-info">Read more</a>
                     </p>
                   </div>
                 </div>
               </li>
-              <?}?>
+              <?php } ?>
             </ul>
           </div>
 
@@ -272,25 +272,25 @@
             <ul class="thumbnails">
               <li class="span4">
                 <div class="thumbnail">
-                  <img src="<?echo $result['pic'];?>" class="box" alt="product name">
+                  <img src="<?php echo $result['pic'];?>" class="box" alt="product name">
                   
                   <div class="caption">
-                        <h1><?echo $result['PlaceName'];?></h1>
+                        <h1><?php echo $result['PlaceName'];?></h1>
                       <p>
-                            <?echo $result['address'];?><br>
-                            <?echo '<b>เขต: </b>'.$result['Area'];?>
-                            <?echo '<b>ประเภท:</b> '.$result['Type'];?><br>
-                            <?echo '<br><b>เรตติ่ง: </b>'.number_format($result['rating'], 1, '.', '');?>
+                            <?php echo $result['address'];?><br>
+                            <?php echo '<b>เขต: </b>'.$result['Area'];?>
+                            <?php echo '<b>ประเภท:</b> '.$result['Type'];?><br>
+                            <?php echo '<br><b>เรตติ่ง: </b>'.number_format($result['rating'], 1, '.', '');?>
                                                     <br><br>
                   </p>
                   <div class="widget-footer">
                     <p>
-                      <a href="<?echo 'detail.php?id='.$result['id'];?>" class="btn btn-info">Read more</a>
+                      <a href="<?php echo 'detail.php?id='.$result['id'];?>" class="btn btn-info">Read more</a>
                     </p>
                   </div>
                 </div>
               </li>
-              <?}?>
+              <?php }?>
             </ul>
           </div>
 
@@ -302,12 +302,12 @@
             FROM (Place INNER JOIN Area ON Place.area_id = Area.idArea) INNER JOIN Review ON Review.idPlace = Place.idPlace 
             GROUP BY Area.idArea order by numberComment desc LIMIT 0,3;"
           );?>
-            <? while($result = mysqli_fetch_array($out)){?>
+            <?php while($result = mysqli_fetch_array($out)){?>
             <ul class="thumbnails">
               <li class="span4">
                 <div class="thumbnail">
               
-                <? 
+                <?php 
                 if($result['name'] == 'ปทุมวัน') {
                   echo '<img src="img/d1.JPG" class="box" alt="product name">';
                   $url = 'http://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%82%E0%B8%95%E0%B8%9B%E0%B8%97%E0%B8%B8%E0%B8%A1%E0%B8%A7%E0%B8%B1%E0%B8%99';
@@ -323,16 +323,16 @@
                   
                   <div class="caption">
                   <p>
-                    <h1><?echo 'เขต '.$result['name'];?></h1>
+                    <h1><?php echo 'เขต '.$result['name'];?></h1>
                   </p>
                   <div class="widget-footer">
                     <p>
-                     <a href="<?echo $url;?>" class="btn btn-info">Read more</a>
+                     <a href="<?php echo $url;?>" class="btn btn-info">Read more</a>
                     </p>
                   </div>
                 </div>
               </li>
-              <?}?>
+              <?php } ?>
             </ul>
           </div>
           
@@ -387,7 +387,7 @@
       <div class="container">
         <p>
           © 2013 Hi! Bangkok All Rights Reserved.
-          <?mysqli_close($con);?>
+          <?php mysqli_close($con);?>
         </p>
       </div>
     </footer>
@@ -396,5 +396,4 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/boot-business.js"></script>
   
-
 </body></html>
